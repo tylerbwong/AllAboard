@@ -44,4 +44,13 @@ class PageBuilder {
             customView,
             customViewRes
     )
+
+    /**
+     * A shadowing method to prevent nesting [page] calls.
+     * (Credits to hotkey for this solution http://stackoverflow.com/a/43470027/4465208)
+     */
+    @Suppress("UNUSED_PARAMETER")
+    @Deprecated(level = DeprecationLevel.ERROR, message = "Pages can't be nested.")
+    fun page(param: () -> Unit = {}) {
+    }
 }
