@@ -12,7 +12,7 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import me.tylerbwong.allaboard.R
 
-class Page(
+class Page internal constructor(
         private var imageUrl: String? = null,
         @DrawableRes private var imageRes: Int? = null,
         private var titleText: String = "",

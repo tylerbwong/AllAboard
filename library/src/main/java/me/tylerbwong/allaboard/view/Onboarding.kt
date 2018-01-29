@@ -12,7 +12,7 @@ import me.tylerbwong.allaboard.R
 import android.support.v4.view.ViewCompat
 import android.view.animation.OvershootInterpolator
 
-class Onboarding(
+class Onboarding internal constructor(
         rootView: ViewGroup,
         @ColorRes private var backgroundColor: Int? = null,
         private var showIndicator: Boolean = true,
