@@ -1,9 +1,10 @@
 package me.tylerbwong.allaboard.builder
 
 import android.app.Activity
+import android.support.annotation.ColorRes
 import android.view.ViewGroup
-import me.tylerbwong.allaboard.Onboarding
-import me.tylerbwong.allaboard.Page
+import me.tylerbwong.allaboard.view.Onboarding
+import me.tylerbwong.allaboard.view.Page
 
 fun Activity.onboarding(setup: OnboardingBuilder.() -> Unit = {}): Onboarding {
     val builder = OnboardingBuilder(this)
@@ -12,17 +13,17 @@ fun Activity.onboarding(setup: OnboardingBuilder.() -> Unit = {}): Onboarding {
 }
 
 @OnboardingMarker
-class OnboardingBuilder(val activity: Activity) {
+class OnboardingBuilder(activity: Activity) {
+    @ColorRes
+    var backgroundColor: Int? = null
     var showIndicator: Boolean = true
-    var showSkip: Boolean = true
     private val pages: MutableList<Page> = mutableListOf()
     private var onFinishHandler: (() -> Unit)? = null
 
     private val rootView: ViewGroup = activity.findViewById(android.R.id.content)
 
     internal fun build(): Onboarding {
-        val result = Onboarding()
-        return result
+        return Onboarding(rootView, backgroundColor, showIndicator, pages, onFinishHandler)
     }
 
     /**

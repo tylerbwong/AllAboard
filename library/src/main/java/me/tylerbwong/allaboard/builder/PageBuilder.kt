@@ -4,7 +4,7 @@ import android.support.annotation.DrawableRes
 import android.support.annotation.LayoutRes
 import android.support.annotation.StringRes
 import android.view.View
-import me.tylerbwong.allaboard.Page
+import me.tylerbwong.allaboard.view.Page
 
 fun OnboardingBuilder.page(setup: PageBuilder.() -> Unit): Page {
     val page = PageBuilder()
@@ -12,26 +12,27 @@ fun OnboardingBuilder.page(setup: PageBuilder.() -> Unit): Page {
     return page.build().also { addPage(it) }
 }
 
+@OnboardingMarker
 class PageBuilder {
     var imageUrl: String? = null
 
     @DrawableRes
     var imageRes: Int? = null
 
-    var titleText: String? = null
+    var titleText: String = ""
 
     @StringRes
     var titleRes: Int? = null
 
-    var subTitleText: String? = null
+    var subTitleText: String = ""
 
     @StringRes
     var subTitleRes: Int? = null
 
-    var view: View? = null
+    var customView: View? = null
 
     @LayoutRes
-    var viewRes: Int? = null
+    var customViewRes: Int? = null
 
     internal fun build(): Page = Page(
             imageUrl,
@@ -40,7 +41,7 @@ class PageBuilder {
             titleRes,
             subTitleText,
             subTitleRes,
-            view,
-            viewRes
+            customView,
+            customViewRes
     )
 }

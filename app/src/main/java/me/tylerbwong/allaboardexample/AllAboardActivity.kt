@@ -19,7 +19,7 @@ class AllAboardActivity : AppCompatActivity() {
                 )
 
         onboarding {
-            showSkip = false
+            backgroundColor = R.color.colorPrimary
             showIndicator = true
 
             page {
@@ -36,11 +36,11 @@ class AllAboardActivity : AppCompatActivity() {
             }
 
             page {
-                view = pageThreeView // Use inflated custom views
+                customView = pageThreeView // Use inflated custom views
             }
 
             page {
-                viewRes = R.layout.page_four // Or just pass a layout resource id!
+                customViewRes = R.layout.page_four // Or just pass a layout resource id!
             }
 
             onFinish {
