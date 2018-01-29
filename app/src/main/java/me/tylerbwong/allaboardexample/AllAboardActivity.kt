@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import me.tylerbwong.allaboard.builder.onboarding
 import me.tylerbwong.allaboard.builder.page
-import me.tylerbwong.allaboard.view.Onboarding
 
 class AllAboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
