@@ -1,0 +1,12 @@
+language: android
+jdk:
+    - oraclejdk8
+android:
+    components:
+        - platform-tools
+        - tools
+        - build-tools-27.0.2
+        - android-27
+        - extra-android-support
+script:
+    ./gradlew build assembleAndroidTest --stacktrace
