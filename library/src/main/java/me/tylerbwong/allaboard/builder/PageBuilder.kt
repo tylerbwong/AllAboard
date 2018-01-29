@@ -1,12 +1,15 @@
-package me.tylerbwong.allaboard.dsl.builder
+package me.tylerbwong.allaboard.builder
 
 import android.support.annotation.DrawableRes
 import android.support.annotation.LayoutRes
 import android.support.annotation.StringRes
 import android.view.View
+import me.tylerbwong.allaboard.Page
 
-fun OnboardingBuilder.page(setup: PageBuilder.() -> Unit) {
-
+fun OnboardingBuilder.page(setup: PageBuilder.() -> Unit): Page {
+    val page = PageBuilder()
+    page.setup()
+    return page.build().also { addPage(it) }
 }
 
 class PageBuilder {
@@ -29,4 +32,15 @@ class PageBuilder {
 
     @LayoutRes
     var viewRes: Int? = null
+
+    internal fun build(): Page = Page(
+            imageUrl,
+            imageRes,
+            titleText,
+            titleRes,
+            subTitleText,
+            subTitleRes,
+            view,
+            viewRes
+    )
 }

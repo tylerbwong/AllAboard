@@ -2,13 +2,21 @@ package me.tylerbwong.allaboardexample
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import me.tylerbwong.allaboard.dsl.builder.onFinish
-import me.tylerbwong.allaboard.dsl.builder.onboarding
-import me.tylerbwong.allaboard.dsl.builder.page
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import me.tylerbwong.allaboard.builder.onboarding
+import me.tylerbwong.allaboard.builder.page
 
 class AllAboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val pageThreeView = LayoutInflater.from(this)
+                .inflate(
+                        R.layout.page_three,
+                        window.decorView.rootView as ViewGroup,
+                        false
+                )
 
         onboarding {
             showSkip = false
@@ -28,7 +36,7 @@ class AllAboardActivity : AppCompatActivity() {
             }
 
             page {
-                view = null // Use inflated custom views
+                view = pageThreeView // Use inflated custom views
             }
 
             page {
