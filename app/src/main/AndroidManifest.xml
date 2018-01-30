@@ -9,15 +9,18 @@
 
         <activity
             android:name=".AllAboardActivity"
-            android:configChanges="orientation"
             android:screenOrientation="sensorPortrait"
-            android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustPan">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".AllAboardFragmentActivity"
+            android:screenOrientation="sensorPortrait"
+            android:theme="@style/AppTheme"/>
     </application>
 </manifest>

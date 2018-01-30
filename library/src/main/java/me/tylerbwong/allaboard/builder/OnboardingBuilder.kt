@@ -2,12 +2,20 @@ package me.tylerbwong.allaboard.builder
 
 import android.app.Activity
 import android.support.annotation.ColorRes
+import android.support.v4.app.Fragment
 import android.view.ViewGroup
 import me.tylerbwong.allaboard.view.Onboarding
 import me.tylerbwong.allaboard.view.Page
 
 fun Activity.onboarding(setup: OnboardingBuilder.() -> Unit = {}): Onboarding {
     val builder = OnboardingBuilder(this)
+    builder.setup()
+    return builder.build()
+}
+
+fun Fragment.onboarding(setup: OnboardingBuilder.() -> Unit = {}): Onboarding {
+    val fragmentActivity = activity ?: throw IllegalStateException("Fragment is not attached to an Activity!")
+    val builder = OnboardingBuilder(fragmentActivity)
     builder.setup()
     return builder.build()
 }
