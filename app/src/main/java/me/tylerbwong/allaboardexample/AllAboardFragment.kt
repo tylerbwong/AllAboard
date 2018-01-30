@@ -37,7 +37,7 @@ class AllAboardFragment : Fragment() {
             }
 
             onFinish {
-                Toast.makeText(activity, "We're all done here!", Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "We're all done here!", Toast.LENGTH_LONG).show()
             }
         }
 
