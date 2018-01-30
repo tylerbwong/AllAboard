@@ -14,7 +14,7 @@ onboarding {
 }
 ```
 
-Then, to add some pages just add some! 
+Then add some pages! 
 
 ```kotlin
 onboarding {
