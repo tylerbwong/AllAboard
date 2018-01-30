@@ -24,7 +24,7 @@ onboarding {
 }
 ```
 
-Here's a complete example
+Here's a complete example.
 
 ```kotlin
 override fun onCreate(savedInstanceState: Bundle?) {
