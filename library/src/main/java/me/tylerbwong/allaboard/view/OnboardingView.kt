@@ -12,11 +12,11 @@ import me.tylerbwong.allaboard.R
 import android.support.v4.view.ViewCompat
 import android.view.animation.OvershootInterpolator
 
-class Onboarding internal constructor(
+class OnboardingView internal constructor(
         rootView: ViewGroup,
         @ColorRes private var backgroundColor: Int? = null,
         private var showIndicator: Boolean = true,
-        private val pages: MutableList<Page> = mutableListOf(),
+        private val pages: MutableList<PageView> = mutableListOf(),
         private var onFinishHandler: (() -> Unit)? = null
 ) : ViewPager.OnPageChangeListener {
     private val onboardingView = LayoutInflater.from(rootView.context)
@@ -34,7 +34,7 @@ class Onboarding internal constructor(
         }
         viewPager.apply {
             adapter = OnboardingPagerAdapter(pages)
-            addOnPageChangeListener(this@Onboarding)
+            addOnPageChangeListener(this@OnboardingView)
         }
         tabDots.apply {
             setupWithViewPager(viewPager, true)

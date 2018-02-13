@@ -9,11 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.airbnb.lottie.LottieAnimationView
+import com.airbnb.lottie.LottieDrawable
 import com.bumptech.glide.Glide
 import me.tylerbwong.allaboard.R
 
-class Page internal constructor(
+class PageView internal constructor(
         private var imageUrl: String? = null,
+        private var lottieFile: String? = null,
         @DrawableRes private var imageRes: Int? = null,
         private var titleText: String = "",
         @StringRes private var titleRes: Int? = null,
@@ -22,7 +25,7 @@ class Page internal constructor(
         private var customView: View? = null,
         @LayoutRes private var customViewRes: Int? = null
 ) {
-    private fun setImage(image: ImageView) {
+    private fun setImage(image: LottieAnimationView) {
         imageUrl?.let {
             Glide.with(image.context)
                     .load(it)
@@ -32,6 +35,16 @@ class Page internal constructor(
 
         imageRes?.let {
             image.setImageResource(it)
+            return
+        }
+
+        lottieFile?.let {
+            val file = it
+            with (image) {
+                setAnimation(file)
+                repeatCount = LottieDrawable.INFINITE
+                playAnimation()
+            }
         }
     }
 
@@ -60,7 +73,7 @@ class Page internal constructor(
 
         val view = LayoutInflater.from(context)
                 .inflate(R.layout.page_view, rootView, false)
-        view.findViewById<ImageView>(R.id.image).apply { setImage(this) }
+        view.findViewById<LottieAnimationView>(R.id.image).apply { setImage(this) }
         view.findViewById<TextView>(R.id.title).apply { text = getTitle(context) }
         view.findViewById<TextView>(R.id.sub_title).apply { text = getSubTitle(context) }
 

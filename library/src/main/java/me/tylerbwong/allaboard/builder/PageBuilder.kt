@@ -4,17 +4,18 @@ import android.support.annotation.DrawableRes
 import android.support.annotation.LayoutRes
 import android.support.annotation.StringRes
 import android.view.View
-import me.tylerbwong.allaboard.view.Page
+import me.tylerbwong.allaboard.view.PageView
 
-fun OnboardingBuilder.page(setup: PageBuilder.() -> Unit): Page {
+fun OnboardingBuilder.page(setup: PageBuilder.() -> Unit): PageView {
     val page = PageBuilder()
     page.setup()
     return page.build().also { addPage(it) }
 }
 
-@OnboardingMarker
 class PageBuilder {
     var imageUrl: String? = null
+
+    var lottieFile: String? = null
 
     @DrawableRes
     var imageRes: Int? = null
@@ -34,8 +35,9 @@ class PageBuilder {
     @LayoutRes
     var customViewRes: Int? = null
 
-    internal fun build(): Page = Page(
+    internal fun build() = PageView(
             imageUrl,
+            lottieFile,
             imageRes,
             titleText,
             titleRes,

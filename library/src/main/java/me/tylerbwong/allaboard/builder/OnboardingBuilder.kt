@@ -4,35 +4,39 @@ import android.app.Activity
 import android.support.annotation.ColorRes
 import android.support.v4.app.Fragment
 import android.view.ViewGroup
-import me.tylerbwong.allaboard.view.Onboarding
-import me.tylerbwong.allaboard.view.Page
+import me.tylerbwong.allaboard.view.OnboardingView
+import me.tylerbwong.allaboard.view.PageView
 
-fun Activity.onboarding(setup: OnboardingBuilder.() -> Unit = {}): Onboarding {
+fun Activity.onboarding(setup: OnboardingBuilder.() -> Unit = {}): OnboardingView {
     val builder = OnboardingBuilder(this)
     builder.setup()
     return builder.build()
 }
 
-fun Fragment.onboarding(setup: OnboardingBuilder.() -> Unit = {}): Onboarding {
-    val fragmentActivity = activity ?: throw IllegalStateException("Fragment is not attached to an Activity!")
+fun Fragment.onboarding(setup: OnboardingBuilder.() -> Unit = {}): OnboardingView {
+    val fragmentActivity = activity
+            ?: throw IllegalStateException("Fragment is not attached to an Activity!")
     val builder = OnboardingBuilder(fragmentActivity)
     builder.setup()
     return builder.build()
 }
 
-@OnboardingMarker
 class OnboardingBuilder(activity: Activity) {
     @ColorRes
     var backgroundColor: Int? = null
     var showIndicator: Boolean = true
-    private val pages: MutableList<Page> = mutableListOf()
+    private val pages: MutableList<PageView> = mutableListOf()
     private var onFinishHandler: (() -> Unit)? = null
 
     private val rootView: ViewGroup = activity.findViewById(android.R.id.content)
 
-    internal fun build(): Onboarding {
-        return Onboarding(rootView, backgroundColor, showIndicator, pages, onFinishHandler)
-    }
+    internal fun build() = OnboardingView(
+            rootView,
+            backgroundColor,
+            showIndicator,
+            pages,
+            onFinishHandler
+    )
 
     /**
      * A shadowing method to prevent nesting [onboarding] calls.
@@ -47,5 +51,5 @@ class OnboardingBuilder(activity: Activity) {
         onFinishHandler = handler
     }
 
-    internal fun addPage(page: Page) = pages.add(page)
+    internal fun addPage(page: PageView) = pages.add(page)
 }

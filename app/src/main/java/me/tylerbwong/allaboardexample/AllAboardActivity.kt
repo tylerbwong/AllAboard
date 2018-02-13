@@ -1,10 +1,10 @@
 package me.tylerbwong.allaboardexample
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import me.tylerbwong.allaboard.builder.onboarding
 import me.tylerbwong.allaboard.builder.page
 
@@ -45,7 +45,7 @@ class AllAboardActivity : AppCompatActivity() {
             }
 
             onFinish {
-                startActivity(Intent(this@AllAboardActivity, AllAboardFragmentActivity::class.java))
+                Toast.makeText(this@AllAboardActivity, "We're all done here!", Toast.LENGTH_LONG).show()
             }
         }
     }
