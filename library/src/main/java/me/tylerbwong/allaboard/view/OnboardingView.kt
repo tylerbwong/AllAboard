@@ -32,20 +32,24 @@ class OnboardingView internal constructor(
         backgroundColor?.let {
             onboardingView.setBackgroundColor(ContextCompat.getColor(rootView.context, it))
         }
+
         viewPager.apply {
             adapter = OnboardingPagerAdapter(pages)
             addOnPageChangeListener(this@OnboardingView)
         }
+
         tabDots.apply {
             setupWithViewPager(viewPager, true)
             visibility = if (showIndicator) View.VISIBLE else View.GONE
         }
+
         skipPrevButton.apply {
             background.alpha = BUTTON_ALPHA
             setOnClickListener {
                 viewPager.currentItem = viewPager.currentItem - 1
             }
         }
+
         nextDoneButton.apply {
             background.alpha = BUTTON_ALPHA
             setOnClickListener {

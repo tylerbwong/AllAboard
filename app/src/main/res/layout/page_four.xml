@@ -12,4 +12,13 @@
         android:src="@drawable/ic_check_white_24dp"
         tools:ignore="ContentDescription"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:text="@string/page_four_text"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
 </LinearLayout>

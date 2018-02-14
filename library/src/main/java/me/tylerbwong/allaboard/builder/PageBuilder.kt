@@ -1,5 +1,6 @@
 package me.tylerbwong.allaboard.builder
 
+import android.support.annotation.ColorRes
 import android.support.annotation.DrawableRes
 import android.support.annotation.LayoutRes
 import android.support.annotation.StringRes
@@ -25,10 +26,16 @@ class PageBuilder {
     @StringRes
     var titleRes: Int? = null
 
+    @ColorRes
+    var titleColor: Int? = null
+
     var subTitleText: String = ""
 
     @StringRes
     var subTitleRes: Int? = null
+
+    @ColorRes
+    var subTitleColor: Int? = null
 
     var customView: View? = null
 
@@ -41,8 +48,10 @@ class PageBuilder {
             imageRes,
             titleText,
             titleRes,
+            titleColor,
             subTitleText,
             subTitleRes,
+            subTitleColor,
             customView,
             customViewRes
     )

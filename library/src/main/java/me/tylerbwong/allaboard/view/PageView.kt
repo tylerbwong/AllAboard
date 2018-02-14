@@ -1,13 +1,13 @@
 package me.tylerbwong.allaboard.view
 
-import android.content.Context
+import android.support.annotation.ColorRes
 import android.support.annotation.DrawableRes
 import android.support.annotation.LayoutRes
 import android.support.annotation.StringRes
+import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieDrawable
@@ -20,8 +20,10 @@ class PageView internal constructor(
         @DrawableRes private var imageRes: Int? = null,
         private var titleText: String = "",
         @StringRes private var titleRes: Int? = null,
+        @ColorRes private var titleColor: Int? = null,
         private var subTitleText: String = "",
         @StringRes private var subTitleRes: Int? = null,
+        @ColorRes private var subTitleColor: Int? = null,
         private var customView: View? = null,
         @LayoutRes private var customViewRes: Int? = null
 ) {
@@ -48,34 +50,46 @@ class PageView internal constructor(
         }
     }
 
-    private fun getTitle(context: Context): String {
+    private fun setTitle(textView: TextView) {
+        titleColor?.let {
+            textView.setTextColor(ContextCompat.getColor(textView.context, it))
+        }
+
         titleRes?.let {
-            return context.getString(it)
+            textView.setText(it)
+            return
         }
-        return titleText
+
+        textView.text = titleText
     }
 
-    private fun getSubTitle(context: Context): String {
+    private fun setSubTitle(textView: TextView) {
+        subTitleColor?.let {
+            textView.setTextColor(it)
+        }
+
         subTitleRes?.let {
-            return context.getString(it)
+            textView.setText(it)
+            return
         }
-        return subTitleText
+
+        textView.text = subTitleText
     }
 
-    internal fun getView(context: Context, rootView: ViewGroup): View {
+    internal fun getView(rootView: ViewGroup): View {
         customView?.let {
             return it
         }
         customViewRes?.let {
-            return LayoutInflater.from(context)
+            return LayoutInflater.from(rootView.context)
                     .inflate(it, rootView, false)
         }
 
-        val view = LayoutInflater.from(context)
+        val view = LayoutInflater.from(rootView.context)
                 .inflate(R.layout.page_view, rootView, false)
         view.findViewById<LottieAnimationView>(R.id.image).apply { setImage(this) }
-        view.findViewById<TextView>(R.id.title).apply { text = getTitle(context) }
-        view.findViewById<TextView>(R.id.sub_title).apply { text = getSubTitle(context) }
+        view.findViewById<TextView>(R.id.title).apply { setTitle(this) }
+        view.findViewById<TextView>(R.id.sub_title).apply { setSubTitle(this) }
 
         return view
     }

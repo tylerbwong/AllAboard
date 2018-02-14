@@ -24,16 +24,15 @@ class AllAboardActivity : AppCompatActivity() {
             showIndicator = true
 
             page {
-                imageRes = R.mipmap.ic_launcher_round
+                imageRes = R.drawable.train
                 titleRes = R.string.app_name
-                subTitleText = "This is a subtitle."
+                subTitleRes = R.string.page_one_sub_title
             }
 
             page {
-                imageUrl = "https://i.pinimg.com/736x/04/20/86/042086261c2f57af2184705e80244ff2" +
-                        "--illustration-styles-dragomir.jpg"
-                titleText = "This is a train."
-                subTitleRes = R.string.app_name
+                lottieFile = "success.json"
+                titleText = "Lottie Support"
+                subTitleText = "Works with Lottie too! Just pass in your file name."
             }
 
             page {
@@ -45,7 +44,11 @@ class AllAboardActivity : AppCompatActivity() {
             }
 
             onFinish {
-                Toast.makeText(this@AllAboardActivity, "We're all done here!", Toast.LENGTH_LONG).show()
+                Toast.makeText(
+                        this@AllAboardActivity,
+                        "We're all done here!",
+                        Toast.LENGTH_LONG
+                ).show()
             }
         }
     }
