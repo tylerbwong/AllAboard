@@ -1,6 +1,30 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'AllAboard'
+
+    publishedGroupId = 'me.tylerbwong.allaboard'
+    libraryName = 'AllAboard'
+    artifact = 'AllAboard'
+
+    libraryDescription = 'A Kotlin DSL for creating onboarding flows in your Android apps.'
+
+    siteUrl = 'https://github.com/tylerbwong/AllAboard'
+    gitUrl = 'https://github.com/tylerbwong/AllAboard.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'tylerbwong'
+    developerName = 'Tyler Wong'
+    developerEmail = 'tbwong3@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 27
     buildToolsVersion "27.0.3"
@@ -39,3 +63,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
+
+tasks.withType(Javadoc).all {
+    enabled = false
+}
+
+apply from: 'https://raw.githubusercontent.com/brightec/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/brightec/JCenter/master/bintrayv1.gradle'

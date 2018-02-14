@@ -5,6 +5,8 @@
 
 Create onboarding flows for your Android apps using a clean and simple Kotlin DSL.
 
+![All Aboard](/art/screenshot.png)
+
 # Basic Usage
 
 Adding an onboarding flow is as easy as adding this call to your Activity's ```onCreate()``` (or Fragment's ```onCreateView()```).
