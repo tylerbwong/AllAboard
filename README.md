@@ -5,7 +5,7 @@
 
 Create onboarding flows for your Android apps using a clean and simple Kotlin DSL.
 
-![All Aboard](/art/screenshot.png)
+<img src="/art/screenshot.png" width="30%">
 
 # Basic Usage
 
