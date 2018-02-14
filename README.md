@@ -1,6 +1,6 @@
 # All Aboard!
 
-[![Build Status](https://travis-ci.com/tylerbwong/AllAboard.svg?token=AABXGtYrzS4uRtMAUqq3&branch=master)](https://travis-ci.com/tylerbwong/AllAboard)
+[![Build Status](https://travis-ci.org/tylerbwong/AllAboard.svg?branch=master)](https://travis-ci.org/tylerbwong/AllAboard)
 
 Create onboarding flows for your Android apps using a clean and simple Kotlin DSL.
 
