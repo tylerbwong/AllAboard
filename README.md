@@ -1,7 +1,7 @@
 # All Aboard!
 
 [![Build Status](https://travis-ci.org/tylerbwong/AllAboard.svg?branch=master)](https://travis-ci.org/tylerbwong/AllAboard)
-[![Download](https://api.bintray.com/packages/tylerbwong/maven/AllAboard/images/download.svg)](https://bintray.com/tylerbwong/maven/AllAboard/latestVersion)
+[![Download](https://api.bintray.com/packages/tylerbwong/maven/AllAboard/images/download.svg)](https://bintray.com/tylerbwong/maven/AllAboard/_latestVersion)
 
 Create onboarding flows for your Android apps using a clean and simple Kotlin DSL.
 
