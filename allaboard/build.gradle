@@ -68,5 +68,7 @@ tasks.withType(Javadoc).all {
     enabled = false
 }
 
-apply from: 'https://raw.githubusercontent.com/brightec/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/brightec/JCenter/master/bintrayv1.gradle'
+if (file('local.properties').exists()) {
+    apply from: 'https://raw.githubusercontent.com/brightec/JCenter/master/installv1.gradle'
+    apply from: 'https://raw.githubusercontent.com/brightec/JCenter/master/bintrayv1.gradle'
+}
