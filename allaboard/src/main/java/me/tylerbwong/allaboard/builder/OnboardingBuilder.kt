@@ -2,6 +2,7 @@ package me.tylerbwong.allaboard.builder
 
 import android.app.Activity
 import android.support.annotation.ColorRes
+import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
 import android.view.ViewGroup
 import me.tylerbwong.allaboard.view.OnboardingView
@@ -28,7 +29,7 @@ class OnboardingBuilder(activity: Activity) {
     private val pages: MutableList<PageView> = mutableListOf()
     private var onFinishHandler: (() -> Unit)? = null
 
-    private val rootView: ViewGroup = activity.findViewById(android.R.id.content)
+    private val rootView: ViewGroup = ActivityCompat.requireViewById(activity, android.R.id.content)
 
     internal fun build() = OnboardingView(
             rootView,

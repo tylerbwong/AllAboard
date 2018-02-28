@@ -4,7 +4,6 @@ import android.support.annotation.ColorRes
 import android.support.design.widget.TabLayout
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
@@ -19,12 +18,17 @@ class OnboardingView internal constructor(
         private val pages: MutableList<PageView> = mutableListOf(),
         private var onFinishHandler: (() -> Unit)? = null
 ) : ViewPager.OnPageChangeListener {
-    private val onboardingView = LayoutInflater.from(rootView.context)
-            .inflate(R.layout.onboarding_view, rootView, true)
-    private val viewPager = onboardingView.findViewById<ViewPager>(R.id.view_pager)
-    private val tabDots = onboardingView.findViewById<TabLayout>(R.id.dot_tabs)
-    private val skipPrevButton = onboardingView.findViewById<ImageButton>(R.id.prev_button)
-    private val nextDoneButton = onboardingView.findViewById<ImageButton>(R.id.next_button)
+    private val onboardingView = rootView.inflateAndAttach(R.layout.onboarding_view)
+    private val viewPager = ViewCompat.requireViewById<ViewPager>(onboardingView, R.id.view_pager)
+    private val tabDots = ViewCompat.requireViewById<TabLayout>(onboardingView, R.id.dot_tabs)
+    private val skipPrevButton = ViewCompat.requireViewById<ImageButton>(
+            onboardingView,
+            R.id.prev_button
+    )
+    private val nextDoneButton = ViewCompat.requireViewById<ImageButton>(
+            onboardingView,
+            R.id.next_button
+    )
     private val interpolator = OvershootInterpolator()
     private var isLastPage = false
 

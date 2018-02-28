@@ -5,7 +5,7 @@ import android.support.annotation.DrawableRes
 import android.support.annotation.LayoutRes
 import android.support.annotation.StringRes
 import android.support.v4.content.ContextCompat
-import android.view.LayoutInflater
+import android.support.v4.view.ViewCompat
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -42,7 +42,7 @@ class PageView internal constructor(
 
         lottieFile?.let {
             val file = it
-            with (image) {
+            with(image) {
                 setAnimation(file)
                 repeatCount = LottieDrawable.INFINITE
                 playAnimation()
@@ -81,16 +81,13 @@ class PageView internal constructor(
             return it
         }
         customViewRes?.let {
-            return LayoutInflater.from(rootView.context)
-                    .inflate(it, rootView, false)
+            return rootView.justInflate(it)
         }
 
-        val view = LayoutInflater.from(rootView.context)
-                .inflate(R.layout.page_view, rootView, false)
-        view.findViewById<LottieAnimationView>(R.id.image).apply { setImage(this) }
-        view.findViewById<TextView>(R.id.title).apply { setTitle(this) }
-        view.findViewById<TextView>(R.id.sub_title).apply { setSubTitle(this) }
-
-        return view
+        return rootView.justInflate(R.layout.page_view).also {
+            ViewCompat.requireViewById<LottieAnimationView>(it, R.id.image).apply { setImage(this) }
+            ViewCompat.requireViewById<TextView>(it, R.id.title).apply { setTitle(this) }
+            ViewCompat.requireViewById<TextView>(it, R.id.sub_title).apply { setSubTitle(this) }
+        }
     }
 }
