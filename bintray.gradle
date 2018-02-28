@@ -29,11 +29,11 @@ artifacts {
     archives sourcesJar
 }
 
-// Bintray
+def localPropertiesFile = project.rootProject.file('local.properties')
 
-if (project.rootProject.file('local.properties').exists()) {
+if (localPropertiesFile.exists()) {
     Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    properties.load(localPropertiesFile.newDataInputStream())
 
     bintray {
         user = properties.getProperty("bintray.user")
