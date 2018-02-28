@@ -7,6 +7,16 @@ Create onboarding flows for your Android apps using a clean and simple Kotlin DS
 
 <img src="/art/screenshot.png" width="30%">
 
+# Download
+
+Add the following to your app's ```build.gradle```.
+
+```gradle
+dependencies {
+    implementation 'me.tylerbwong.allaboard:1.0.1'
+}
+```
+
 # Basic Usage
 
 Adding an onboarding flow is as easy as adding this call to your Activity's ```onCreate()``` (or Fragment's ```onCreateView()```).
@@ -66,6 +76,15 @@ override fun onCreate(savedInstanceState: Bundle?) {
     }
 }
 ```
+
+# Acknowledgements
+
+This library was heavily inspired by [zsmb13/MaterialDrawerKt](https://github.com/zsmb13/MaterialDrawerKt). Definitely go check it out!
+
+Other libraries used in this project
+
+* [bumptech/glide](https://github.com/bumptech/glide)
+* [airbnb/lottie-android](https://github.com/airbnb/lottie-android)
 
 # License
 
