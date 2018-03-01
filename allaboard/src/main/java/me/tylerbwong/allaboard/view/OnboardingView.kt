@@ -1,6 +1,7 @@
 package me.tylerbwong.allaboard.view
 
 import android.support.annotation.ColorRes
+import android.support.annotation.DrawableRes
 import android.support.design.widget.TabLayout
 import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
@@ -105,7 +106,12 @@ class OnboardingView internal constructor(
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
     }
 
-    private fun animate(button: ImageButton, toIcon: Int, rotation: Float, duration: Long) {
+    private fun animate(
+            button: ImageButton,
+            @DrawableRes toIcon: Int,
+            rotation: Float,
+            duration: Long
+    ) {
         button.setImageResource(toIcon)
         ViewCompat.animate(button)
                 .rotation(rotation)
