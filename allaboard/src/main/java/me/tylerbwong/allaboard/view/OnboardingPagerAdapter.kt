@@ -8,9 +8,8 @@ internal class OnboardingPagerAdapter(private val pages: List<PageView>) : Pager
     override fun instantiateItem(container: ViewGroup, position: Int): View =
             pages[position].getView(container).also { container.addView(it) }
 
-    override fun destroyItem(container: ViewGroup, position: Int, page: Any) {
+    override fun destroyItem(container: ViewGroup, position: Int, page: Any) =
         container.removeView(page as View)
-    }
 
     override fun getCount(): Int = pages.size
 
