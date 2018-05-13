@@ -13,7 +13,7 @@ Add the following to your app's ```build.gradle```.
 
 ```gradle
 dependencies {
-    implementation 'me.tylerbwong.allaboard:1.0.1'
+    implementation 'me.tylerbwong:allaboard:1.0.1'
 }
 ```
 
