@@ -22,6 +22,7 @@ fun Fragment.onboarding(setup: OnboardingBuilder.() -> Unit = {}): OnboardingVie
     return builder.build()
 }
 
+@AllAboardDsl
 class OnboardingBuilder(activity: Activity) {
     @ColorRes
     var backgroundColor: Int? = null
@@ -43,7 +44,6 @@ class OnboardingBuilder(activity: Activity) {
      * A shadowing method to prevent nesting [onboarding] calls.
      * (Credits to hotkey for this solution http://stackoverflow.com/a/43470027/4465208)
      */
-    @Suppress("UNUSED_PARAMETER")
     @Deprecated(level = DeprecationLevel.ERROR, message = "Onboardings can't be nested.")
     fun onboarding(param: () -> Unit = {}) {
     }

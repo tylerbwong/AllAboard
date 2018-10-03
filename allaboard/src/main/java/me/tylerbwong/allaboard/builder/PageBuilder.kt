@@ -13,6 +13,7 @@ fun OnboardingBuilder.page(setup: PageBuilder.() -> Unit): PageView {
     return page.build().also { addPage(it) }
 }
 
+@AllAboardDsl
 class PageBuilder {
     var imageUrl: String? = null
 
@@ -65,3 +66,6 @@ class PageBuilder {
     fun page(param: () -> Unit = {}) {
     }
 }
+
+@DslMarker
+annotation class AllAboardDsl
