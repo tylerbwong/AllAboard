@@ -3,10 +3,13 @@ package me.tylerbwong.allaboardexample
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import me.tylerbwong.allaboard.builder.onboarding
 import me.tylerbwong.allaboard.builder.page
+import me.tylerbwong.allaboard.view.OnPageChangeListenerAdapter
 
 class AllAboardActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,10 +21,28 @@ class AllAboardActivity : AppCompatActivity() {
                         window.decorView.rootView as ViewGroup,
                         false
                 )
+        val customNavigationView = LayoutInflater.from(this)
+                .inflate(
+                        R.layout.custom_navigation_view,
+                        window.decorView.rootView as ViewGroup,
+                        false
+                )
+        val skipButton = ViewCompat.requireViewById<Button>(customNavigationView, R.id.skip_button)
+        val nextDoneButton = ViewCompat.requireViewById<Button>(customNavigationView, R.id.next_button)
 
-        onboarding {
+        val pageNavigator = onboarding {
             backgroundColor = R.color.colorPrimary
             showIndicator = true
+            onPageChangeListener = object : OnPageChangeListenerAdapter() {
+                override fun onPageSelected(position: Int) {
+                    Toast.makeText(
+                            this@AllAboardActivity,
+                            "Showing page number $position",
+                            Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            navigationView = customNavigationView
 
             page {
                 imageRes = R.drawable.train
@@ -51,5 +72,7 @@ class AllAboardActivity : AppCompatActivity() {
                 ).show()
             }
         }
+        skipButton.setOnClickListener { pageNavigator.finish() }
+        nextDoneButton.setOnClickListener { pageNavigator.goToNext() }
     }
 }

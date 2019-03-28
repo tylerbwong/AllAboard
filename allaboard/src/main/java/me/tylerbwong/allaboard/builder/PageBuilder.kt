@@ -7,10 +7,10 @@ import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import me.tylerbwong.allaboard.view.PageView
 
-fun OnboardingBuilder.page(setup: PageBuilder.() -> Unit): PageView {
+fun OnboardingBuilder.page(setup: PageBuilder.() -> Unit) {
     val page = PageBuilder()
     page.setup()
-    return page.build().also { addPage(it) }
+    page.build().also { addPage(it) }
 }
 
 @AllAboardDsl
@@ -68,4 +68,4 @@ class PageBuilder {
 }
 
 @DslMarker
-annotation class AllAboardDsl
+internal annotation class AllAboardDsl
