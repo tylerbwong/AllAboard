@@ -1,8 +1,8 @@
 package me.tylerbwong.allaboard.view
 
-import android.support.v4.view.PagerAdapter
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager.widget.PagerAdapter
 
 internal class OnboardingPagerAdapter(private val pages: List<PageView>) : PagerAdapter() {
     override fun instantiateItem(container: ViewGroup, position: Int): View =

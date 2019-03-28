@@ -1,10 +1,10 @@
 package me.tylerbwong.allaboard.builder
 
-import android.support.annotation.ColorRes
-import android.support.annotation.DrawableRes
-import android.support.annotation.LayoutRes
-import android.support.annotation.StringRes
 import android.view.View
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.LayoutRes
+import androidx.annotation.StringRes
 import me.tylerbwong.allaboard.view.PageView
 
 fun OnboardingBuilder.page(setup: PageBuilder.() -> Unit): PageView {

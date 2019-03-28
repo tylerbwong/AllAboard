@@ -1,9 +1,9 @@
 package me.tylerbwong.allaboard.view
 
-import android.support.annotation.LayoutRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
 
 fun ViewGroup.inflateAndAttach(@LayoutRes resource: Int): View = LayoutInflater.from(context)
         .inflate(resource, this)

@@ -1,10 +1,10 @@
 package me.tylerbwong.allaboard.builder
 
 import android.app.Activity
-import android.support.annotation.ColorRes
-import android.support.v4.app.ActivityCompat
-import android.support.v4.app.Fragment
 import android.view.ViewGroup
+import androidx.annotation.ColorRes
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
 import me.tylerbwong.allaboard.view.OnboardingView
 import me.tylerbwong.allaboard.view.PageView
 

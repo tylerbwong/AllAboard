@@ -1,10 +1,10 @@
 package me.tylerbwong.allaboardexample
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import me.tylerbwong.allaboard.builder.onboarding
 import me.tylerbwong.allaboard.builder.page
 

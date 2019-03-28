@@ -1,16 +1,16 @@
 package me.tylerbwong.allaboard.view
 
-import android.support.annotation.ColorRes
-import android.support.annotation.DrawableRes
-import android.support.design.widget.TabLayout
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.ViewPager
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import me.tylerbwong.allaboard.R
-import android.support.v4.view.ViewCompat
 import android.view.animation.OvershootInterpolator
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 
 class OnboardingView internal constructor(
         rootView: ViewGroup,
