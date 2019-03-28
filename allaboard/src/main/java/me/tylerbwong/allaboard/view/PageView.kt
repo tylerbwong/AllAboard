@@ -27,53 +27,50 @@ class PageView internal constructor(
         private var customView: View? = null,
         @LayoutRes private var customViewRes: Int? = null
 ) {
-    private fun setImage(image: LottieAnimationView) {
+    private fun LottieAnimationView.applyImage() {
         imageUrl?.let {
-            Glide.with(image.context)
+            Glide.with(context)
                     .load(it)
-                    .into(image)
+                    .into(this)
             return
         }
 
         imageRes?.let {
-            image.setImageResource(it)
+            setImageResource(it)
             return
         }
 
         lottieFile?.let {
-            val file = it
-            with(image) {
-                setAnimation(file)
-                repeatCount = LottieDrawable.INFINITE
-                playAnimation()
-            }
+            setAnimation(it)
+            repeatCount = LottieDrawable.INFINITE
+            playAnimation()
         }
     }
 
-    private fun setTitle(textView: TextView) {
+    private fun TextView.applyTitle() {
         titleColor?.let {
-            textView.setTextColor(ContextCompat.getColor(textView.context, it))
+            setTextColor(ContextCompat.getColor(context, it))
         }
 
         titleRes?.let {
-            textView.setText(it)
+            setText(it)
             return
         }
 
-        textView.text = titleText
+        text = titleText
     }
 
-    private fun setSubTitle(textView: TextView) {
+    private fun TextView.applySubTitle() {
         subTitleColor?.let {
-            textView.setTextColor(it)
+            setTextColor(it)
         }
 
         subTitleRes?.let {
-            textView.setText(it)
+            setText(it)
             return
         }
 
-        textView.text = subTitleText
+        text = subTitleText
     }
 
     internal fun getView(rootView: ViewGroup): View {
@@ -85,9 +82,9 @@ class PageView internal constructor(
         }
 
         return rootView.justInflate(R.layout.page_view).also {
-            ViewCompat.requireViewById<LottieAnimationView>(it, R.id.image).apply { setImage(this) }
-            ViewCompat.requireViewById<TextView>(it, R.id.title).apply { setTitle(this) }
-            ViewCompat.requireViewById<TextView>(it, R.id.sub_title).apply { setSubTitle(this) }
+            ViewCompat.requireViewById<LottieAnimationView>(it, R.id.image).applyImage()
+            ViewCompat.requireViewById<TextView>(it, R.id.title).applyTitle()
+            ViewCompat.requireViewById<TextView>(it, R.id.sub_title).applySubTitle()
         }
     }
 }
