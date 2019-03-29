@@ -14,7 +14,7 @@ ext {
     siteUrl = 'https://github.com/tylerbwong/AllAboard'
     gitUrl = 'https://github.com/tylerbwong/AllAboard.git'
 
-    libraryVersion = '1.0.2'
+    libraryVersion = '1.1.0'
 
     developerId = 'tylerbwong'
     developerName = 'Tyler Wong'
@@ -32,7 +32,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
-        versionName "1.0.2"
+        versionName "1.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
