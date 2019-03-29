@@ -45,9 +45,12 @@ override fun onCreate(savedInstanceState: Bundle?) {
     
     ...
     
-    onboarding {
+    // Use a PageNavigator to programmatically change pages
+    val navigator = onboarding {
         backgroundColor = R.color.colorPrimary
         showIndicator = true
+        onPageChangeListener = ... // Set an onPageChangeListener to listen to page changes
+        navigationView = ... // Set a custom navigation view to handle switching pages
         
         // Specify contents with resource ids or strings
         page {
