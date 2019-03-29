@@ -14,7 +14,7 @@ import com.airbnb.lottie.LottieDrawable
 import com.bumptech.glide.Glide
 import me.tylerbwong.allaboard.R
 
-class PageView internal constructor(
+internal class PageView(
         private var imageUrl: String? = null,
         private var lottieFile: String? = null,
         @DrawableRes private var imageRes: Int? = null,
@@ -27,6 +27,21 @@ class PageView internal constructor(
         private var customView: View? = null,
         @LayoutRes private var customViewRes: Int? = null
 ) {
+    internal fun getView(rootView: ViewGroup): View {
+        customView?.let {
+            return it
+        }
+        customViewRes?.let {
+            return rootView.justInflate(it)
+        }
+
+        return rootView.justInflate(R.layout.page_view).also {
+            ViewCompat.requireViewById<LottieAnimationView>(it, R.id.image).applyImage()
+            ViewCompat.requireViewById<TextView>(it, R.id.title).applyTitle()
+            ViewCompat.requireViewById<TextView>(it, R.id.sub_title).applySubTitle()
+        }
+    }
+
     private fun LottieAnimationView.applyImage() {
         imageUrl?.let {
             Glide.with(context)
@@ -71,20 +86,5 @@ class PageView internal constructor(
         }
 
         text = subTitleText
-    }
-
-    internal fun getView(rootView: ViewGroup): View {
-        customView?.let {
-            return it
-        }
-        customViewRes?.let {
-            return rootView.justInflate(it)
-        }
-
-        return rootView.justInflate(R.layout.page_view).also {
-            ViewCompat.requireViewById<LottieAnimationView>(it, R.id.image).applyImage()
-            ViewCompat.requireViewById<TextView>(it, R.id.title).applyTitle()
-            ViewCompat.requireViewById<TextView>(it, R.id.sub_title).applySubTitle()
-        }
     }
 }

@@ -1,60 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/bottom_bar" />
+        android:layout_above="@+id/navigation_container" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/dot_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_bar"
+        android:layout_above="@+id/navigation_container"
         app:tabBackground="@drawable/tab_dot_selector"
         app:tabGravity="center"
         app:tabIndicatorHeight="0dp"
         app:tabPaddingEnd="8dp"
         app:tabPaddingStart="8dp" />
 
-    <RelativeLayout
-        android:id="@+id/bottom_bar"
+    <FrameLayout
+        android:id="@+id/navigation_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginStart="32dp">
-
-        <ImageButton
-            android:id="@+id/prev_button"
-            android:layout_width="@dimen/round_button_size"
-            android:layout_height="@dimen/round_button_size"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:background="@drawable/round_button"
-            android:gravity="end"
-            android:rotation="180"
-            android:visibility="invisible"
-            app:srcCompat="@drawable/ic_arrow_forward_white_24dp"
-            tools:ignore="ContentDescription" />
-
-        <ImageButton
-            android:id="@+id/next_button"
-            android:layout_width="@dimen/round_button_size"
-            android:layout_height="@dimen/round_button_size"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/round_button"
-            android:gravity="end"
-            app:srcCompat="@drawable/ic_arrow_forward_white_24dp"
-            tools:ignore="ContentDescription" />
-    </RelativeLayout>
+        android:layout_alignParentBottom="true" />
 </RelativeLayout>
